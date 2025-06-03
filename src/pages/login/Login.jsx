@@ -1,7 +1,7 @@
 import React from "react";
 import loginAnimated from "../../assets/lotties/login.json";
 import Lottie from "react-lottie";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
@@ -9,7 +9,9 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate()
   // lottie animation data
   const defaultOptions = {
     loop: true,
@@ -34,12 +36,32 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate(location?.state || '/')
         }
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
+
+  const loginGoogle = () => {
+    loginWithGoogle()
+    .then(result=> {
+       if (result.user) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "login with google successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(location?.state || '/')
+        }
+    })
+    .catch(error => {
+      toast.error(error.message);
+    })
+  }
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -49,7 +71,7 @@ const Login = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <h1 className="text-3xl text-center font-bold">Login now!</h1>
-            <button className="btn">
+            <button onClick={loginGoogle} className="btn">
               <FcGoogle size={24} />
               Login with Google
             </button>

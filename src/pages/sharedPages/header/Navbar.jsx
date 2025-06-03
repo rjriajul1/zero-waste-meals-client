@@ -1,31 +1,96 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { NavLink} from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user,userSingOut } = useAuth();
+  const handleSignOut = () => {
+    userSingOut()
+    .then(result=> {
+      console.log(result);
+    })
+    .catch(error=> {
+      console.log(error.message);
+    })
+  }
   const links = (
     <>
       <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/'>Home</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 underline" : ""
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/availableFoods'>Available Foods</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 underline" : ""
+          }
+          to="/availableFoods"
+        >
+          Available Foods
+        </NavLink>
       </li>
       <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/addFood'>Add Food</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 underline" : ""
+          }
+          to="/addFood"
+        >
+          Add Food
+        </NavLink>
       </li>
       <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/manageMyFoods'>Manage My Foods</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 underline" : ""
+          }
+          to="/manageMyFoods"
+        >
+          Manage My Foods
+        </NavLink>
       </li>
       <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/myFoodRequest'>My Food Request</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 underline" : ""
+          }
+          to="/myFoodRequest"
+        >
+          My Food Request
+        </NavLink>
       </li>
-      <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/login'>Login</NavLink>
-      </li>
-      <li>
-          <NavLink className={({isActive})=> isActive ? 'text-blue-500 underline' : ''} to='/register'>Register</NavLink>
-      </li>
-
+      {user ? (
+        ""
+      ) : (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 underline" : ""
+              }
+              to="/login"
+            >
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 underline" : ""
+              }
+              to="/register"
+            >
+              Register
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -53,18 +118,19 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-           {links}
+            {links}
           </ul>
         </div>
-        <h1 className="text-2xl font-bold text-green-500"><span className="text-blue-500">Zero</span><span className="text-red-500">Waste</span>Meals</h1>
+        <h1 className="text-2xl font-bold text-green-500">
+          <span className="text-blue-500">Zero</span>
+          <span className="text-red-500">Waste</span>Meals
+        </h1>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user && <button  onClick={handleSignOut} className="btn">Sign Out </button>}
       </div>
     </div>
   );
