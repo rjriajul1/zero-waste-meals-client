@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink} from "react-router";
 import useAuth from "../../../hooks/useAuth";
+import { CgProfile } from "react-icons/cg";
+import { motion } from "motion/react"
 
 const Navbar = () => {
   const { user,userSingOut } = useAuth();
@@ -130,7 +132,18 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        {user && <button  onClick={handleSignOut} className="btn">Sign Out </button>}
+      <div className="mr-5">
+        {user ? <img className="w-16 h-16 rounded-full object-fill" src={user?.photoURL} alt="" /> : <CgProfile size={50} />}
+      </div>
+      
+        {user && <motion.button 
+        whileHover={{scale: 1.1}}
+        whileTap={{scale: 0.90}}
+          onClick={handleSignOut}
+
+           className="btn hover:btn-primary">
+            Sign Out 
+           </motion.button>}
       </div>
     </div>
   );

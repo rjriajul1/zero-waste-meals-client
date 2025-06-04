@@ -11,7 +11,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 const Register = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate()
-  const { register } = useAuth();
+  const { register, updateUser } = useAuth();
   // lottie animationData
   const defaultOptions = {
     loop: true,
@@ -23,9 +23,16 @@ const Register = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const userInfo = Object.fromEntries(formData.entries());
-    const { email, password, ...rest } = userInfo;
-    console.log(email, password);
+    const data = Object.fromEntries(formData.entries());
+    const { email, password, ...userInfo } = data;
+    
+    // user profile data processing
+    const {name, photo} =  userInfo;
+    const userUpdate = {
+      displayName: name,
+      photoURL: photo
+    }
+    console.log(userUpdate);
     // register firebase
     register(email, password)
       .then((result) => {
@@ -38,11 +45,21 @@ const Register = () => {
             timer: 1500,
           });
         }
-        navigate('/')
+      
+        // update user
+        updateUser(userUpdate)
+        .then(result=> {
+          console.log(result);
+        })
+        .catch(error=> {
+          console.log(error.message);
+        })
+       
       })
       .catch((error) => {
         toast.error(error.message);
       });
+         navigate('/')
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -87,7 +104,7 @@ const Register = () => {
                 className="input"
                 placeholder="Password"
               />
-              <div onClick={()=> setShow(!show)} className="absolute top-2 right-4">
+              <div onClick={()=> setShow(!show)} className="z-10 absolute top-2 right-4">
                 {show ? <FaRegEyeSlash size={22} /> : <FaRegEye size={22} />}
               </div>
              </div>
