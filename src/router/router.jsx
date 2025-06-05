@@ -18,10 +18,14 @@ const router = createBrowserRouter([
     children:[
         {
             index: true,
+            hydrateFallbackElement: <p>Loading.....</p>,
+            loader: ()=> fetch(`${import.meta.env.VITE_URL}getFoodLargeQuantity`),
             Component:Home
         },
         {
             path: 'availableFoods',
+            hydrateFallbackElement: <p>Loading.....</p>,
+            loader: () => fetch(`${import.meta.env.VITE_URL}getFoodStatus`),
             Component:AvailableFoods
         },
         {

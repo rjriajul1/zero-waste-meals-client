@@ -1,6 +1,9 @@
 import React from "react";
 import { motion } from "motion/react";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 const AddFood = () => {
    const {user} = useAuth();
     const handleAddFoodFrom = e => {
@@ -12,7 +15,24 @@ const AddFood = () => {
         newFood.donorName = user?.displayName;
         newFood.donorEmail = user?.email;
         newFood.status = 'available';
-        console.log(newFood);
+        
+        // insert data data base 
+        axios.post(`${import.meta.env.VITE_URL}foods`, newFood)
+        .then(result => {
+          if(result?.data?.data?.insertedId){
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your food has been added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset()
+          }
+        })
+        .catch(error=> {
+          toast.error(error.message);
+        })
     }
   return (
     <div>
