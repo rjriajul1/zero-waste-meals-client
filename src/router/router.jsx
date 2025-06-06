@@ -10,6 +10,7 @@ import MyFoodRequest from "../pages/myFoodRequest/MyFoodRequest";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import PrivateRoutes from "../routes/PrivateRoutes";
+import FoodDetails from "../pages/foodDetails/FoodDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
         {
             path: 'myFoodRequest',
             element:<PrivateRoutes><MyFoodRequest></MyFoodRequest></PrivateRoutes>
+        },
+        {
+            path: 'foodDetails/:id',
+            loader: ({params})=> fetch(`${import.meta.env.VITE_URL}food/${params.id}`),
+            element:<PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes>
         },
         {
             path: 'login',
