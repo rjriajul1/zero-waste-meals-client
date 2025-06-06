@@ -15,5 +15,4 @@ const ManageMyFoods = () => {
     </div>
   );
 };
-
 export default ManageMyFoods;

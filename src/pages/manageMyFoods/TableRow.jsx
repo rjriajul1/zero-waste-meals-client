@@ -1,8 +1,9 @@
 import React from "react";
 import { MdEdit, MdLocationOn } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
-const TableRow = ({ food, index }) => {
-  const { name, photo, quantity, location, date, status } = food || {};
+const TableRow = ({ food, index, handleDeleteBtn }) => {
+  const { name, photo, quantity, location, date, status,_id } = food || {};
+ 
   return (
     <tr className="flex flex-wrap justify-around">
       <th>
@@ -32,7 +33,7 @@ const TableRow = ({ food, index }) => {
       </td>
       <td>{status}</td>
       <th>
-        <button className="btn hover:btn-accent mr-2">
+        <button onClick={()=>handleDeleteBtn(_id)} className="btn hover:btn-accent mr-2">
           <RiDeleteBin5Line color="red" size={24} />
         </button>
         <button className="btn hover:btn-accent hover:text-white ">
