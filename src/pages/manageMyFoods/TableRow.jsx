@@ -1,0 +1,46 @@
+import React from "react";
+import { MdEdit, MdLocationOn } from "react-icons/md";
+import { RiDeleteBin5Line } from "react-icons/ri";
+const TableRow = ({ food, index }) => {
+  const { name, photo, quantity, location, date, status } = food || {};
+  return (
+    <tr className="flex flex-wrap justify-around">
+      <th>
+        <label>{index + 1}</label>
+      </th>
+      <td>
+        <div className="flex w-52 items-center gap-3">
+          <div className="avatar">
+            <div className="mask mask-squircle h-12 w-12">
+              <img src={photo} alt="Avatar Tailwind CSS Component" />
+            </div>
+          </div>
+          <div>
+            <div className="font-bold">{name}</div>
+            <div className="text-sm opacity-50">
+              <p className="flex items-center">
+                <MdLocationOn className="mt-1" size={18} />
+                {location}
+              </p>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p> Q: {quantity}</p>
+        <span>EX: {date}</span>
+      </td>
+      <td>{status}</td>
+      <th>
+        <button className="btn hover:btn-accent mr-2">
+          <RiDeleteBin5Line color="red" size={24} />
+        </button>
+        <button className="btn hover:btn-accent hover:text-white ">
+          <MdEdit size={24} />
+        </button>
+      </th>
+    </tr>
+  );
+};
+
+export default TableRow;
