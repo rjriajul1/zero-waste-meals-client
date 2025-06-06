@@ -1,6 +1,7 @@
 import React from "react";
 import { MdEdit, MdLocationOn } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { Link } from "react-router";
 const TableRow = ({ food, index, handleDeleteBtn }) => {
   const { name, photo, quantity, location, date, status,_id } = food || {};
  
@@ -36,9 +37,9 @@ const TableRow = ({ food, index, handleDeleteBtn }) => {
         <button onClick={()=>handleDeleteBtn(_id)} className="btn hover:btn-accent mr-2">
           <RiDeleteBin5Line color="red" size={24} />
         </button>
-        <button className="btn hover:btn-accent hover:text-white ">
+        <Link to={`/updateFood/${_id}`}><button className="btn hover:btn-accent hover:text-white ">
           <MdEdit size={24} />
-        </button>
+        </button></Link>
       </th>
     </tr>
   );

@@ -11,6 +11,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import PrivateRoutes from "../routes/PrivateRoutes";
 import FoodDetails from "../pages/foodDetails/FoodDetails";
+import UpdateFood from "../pages/updateFood/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,14 @@ const router = createBrowserRouter([
             element:<PrivateRoutes><MyFoodRequest></MyFoodRequest></PrivateRoutes>
         },
         {
+            path: 'updateFood/:id',
+             hydrateFallbackElement: <p>Loading.....</p>,
+            loader: ({params})=> fetch(`${import.meta.env.VITE_URL}food/${params.id}`),
+            Component:UpdateFood
+        },
+        {
             path: 'foodDetails/:id',
+             hydrateFallbackElement: <p>Loading.....</p>,
             loader: ({params})=> fetch(`${import.meta.env.VITE_URL}food/${params.id}`),
             element:<PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes>
         },
