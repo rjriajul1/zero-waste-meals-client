@@ -63,6 +63,7 @@ const Register = () => {
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
+      <title>Register</title>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <Lottie options={defaultOptions} width={350} height={350} />

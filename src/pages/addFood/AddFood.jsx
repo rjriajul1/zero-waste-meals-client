@@ -36,6 +36,7 @@ const AddFood = () => {
     }
   return (
     <div>
+      <title>Add Food</title>
       <div>
         <h1 className="text-4xl font-semibold my-4 text-center">
           {" "}

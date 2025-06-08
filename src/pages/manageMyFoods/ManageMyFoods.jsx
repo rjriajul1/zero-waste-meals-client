@@ -7,6 +7,7 @@ const ManageMyFoods = () => {
   const { user } = useAuth();
   return (
     <div className="my-7">
+      <title>Manage My Food</title>
       <Suspense fallback={<p>Loading....</p>}>
         <Table
           promiseFoodUserEmailBase={promiseFoodUserEmailBase(user?.email)}

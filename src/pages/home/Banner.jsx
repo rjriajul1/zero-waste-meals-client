@@ -9,13 +9,13 @@ const Banner = () => {
         <div className="flex-1">
           <motion.img
             animate={{ y: [-17, 50, -17] }}
-            transition={{ duration: 5, repeat: Infinity }}
+            transition={{ duration: 10, repeat: Infinity }}
             src={img1}
             className=" w-64 md:w-80 rounded-tl-4xl rounded-br-4xl border-t-7 border-b-7 border-blue-500 border-r-2 border-l-2 "
           />
           <motion.img
             animate={{ x: [-10, 80, -10] }}
-            transition={{ duration: 7, repeat: Infinity }}
+            transition={{ duration: 20, repeat: Infinity }}
             src={img2}
             className=" w-64 md:w-80 rounded-bl-4xl rounded-tr-4xl border-b-7 border-t-7 border-green-500 -mt-10 border-l-2 border-r-2"
           />

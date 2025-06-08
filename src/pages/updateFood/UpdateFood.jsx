@@ -34,6 +34,7 @@ const UpdateFood = () => {
   };
   return (
     <div className="my-8">
+      <title>Update Food</title>
       <div className="w-5/6 mx-auto">
         <form
           onSubmit={handleUpdateFoodFrom}

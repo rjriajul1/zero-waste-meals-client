@@ -15,9 +15,11 @@ const FoodDetails = () => {
     donorName,
     donorEmail,
     status,
+    _id
   } = food || {};
   return (
     <div className="card bg-base-100 w-[600px] my-6 mx-auto shadow-sm">
+      <title>{`Food Details ${_id}`}</title>
       <figure>
         <img src={photo} alt="Shoes" />
       </figure>
