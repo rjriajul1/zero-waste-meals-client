@@ -3,6 +3,8 @@ import Banner from './Banner';
 import FeaturedFood from './FeaturedFood';
 import { useLoaderData } from 'react-router';
 import OurMission from '../sharedPages/ourMission/OurMission';
+import Volunteer from './volunteer/Volunteer';
+
 
 const Home = () => {
     const foods = useLoaderData();
@@ -13,6 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedFood foods={foods}></FeaturedFood>
             <OurMission></OurMission>
+            <Volunteer></Volunteer>
         </div>
     );
 };
