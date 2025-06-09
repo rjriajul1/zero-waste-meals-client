@@ -25,6 +25,17 @@ const Register = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     const { email, password, ...userInfo } = data;
+
+    if(password.length < 6){
+      return toast.error('At least this password longer 6 character or more longer ')
+    }
+
+    if(!/[a-z]/.test(password)){
+      return toast.error('at least this password will have one lower case')
+    }
+    if(!/[A-Z]/.test(password)){
+      return toast.error('at least this password will have one upper case')
+    }
     
     // user profile data processing
     const {name, photo} =  userInfo;
@@ -75,6 +86,7 @@ const Register = () => {
               {/* name */}
               <label className="label">Name</label>
               <input
+               required
                 type="text"
                 name="name"
                 className="input"
@@ -83,6 +95,7 @@ const Register = () => {
               {/* photo URL */}
               <label className="label">Photo</label>
               <input
+              required
                 type="url"
                 name="photo"
                 className="input"
@@ -91,6 +104,7 @@ const Register = () => {
               {/* email */}
               <label className="label">Email</label>
               <input
+              required
                 type="email"
                 name="email"
                 className="input"
@@ -100,6 +114,7 @@ const Register = () => {
               <label className="label">Password</label>
              <div className="relative">
                  <input
+                 required
                 type={show? 'text' : 'password'}
                 name="password"
                 className="input"

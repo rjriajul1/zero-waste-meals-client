@@ -5,8 +5,10 @@ import Footer from '../pages/sharedPages/footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div>
-            <Navbar></Navbar>
+        <div className='relative'>
+            <div className='sticky top-0 z-10'>
+                <Navbar></Navbar>
+            </div>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
