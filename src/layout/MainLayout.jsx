@@ -9,7 +9,9 @@ const MainLayout = () => {
             <div className='sticky top-0 z-10'>
                 <Navbar></Navbar>
             </div>
-            <Outlet></Outlet>
+            <div className='min-h-[calc(100vh-540px)]'>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );
