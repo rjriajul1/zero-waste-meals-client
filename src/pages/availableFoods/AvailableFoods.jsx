@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
-import { Link, useLoaderData } from "react-router";
+import { Link} from "react-router";
 
 const AvailableFoods = () => {
-  const allFoods = useLoaderData();
+  const [search,setSearch] = useState("");
+  const [foods,setFoods] = useState([])
+
+  useEffect(()=> {
+    fetch(`${import.meta.env.VITE_URL}getFoodStatus?search=${search}`)
+    .then(res=>res.json())
+    .then(data => {
+      setFoods(data)
+    })
+  }, [search])
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-11/12 mx-auto my-10">
+   <div>
+   <div className="flex justify-center p-6">
+     <input onChange={(e)=>setSearch(e.target.value)} className="border p-2 rounded-2xl w-4/6" type="text" placeholder="search" />
+   </div>
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-11/12 mx-auto my-10">
       <title>Available Food</title>
-      {allFoods?.map((food) => (
+      {foods?.map((food) => (
         <div className="" key={food._id}>
           <div className="card bg-base-100 h-96 shadow-sm">
             <figure>
@@ -41,6 +54,7 @@ const AvailableFoods = () => {
         </div>
       ))}
     </div> 
+   </div>
   );
 };
 
