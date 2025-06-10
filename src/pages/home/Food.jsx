@@ -4,7 +4,7 @@ import { MdLocationOn } from "react-icons/md";
 const Food = ({ food }) => {
   const { name, photo, quantity,location, command,date } = food || {};
   return (
-    <div className="flex gap-4 p-4 bg-teal-200 rounded-2xl">
+    <div className="flex gap-4 p-4 bg-accent rounded-2xl">
         <div className="">
             <figure className="">
                 <img className="rounded-2xl w-80 h-auto " src={photo} alt="" />

@@ -1,20 +1,20 @@
 import React from "react";
-import { NavLink} from "react-router";
+import { NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import { CgProfile } from "react-icons/cg";
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 const Navbar = () => {
-  const { user,userSingOut } = useAuth();
+  const { user, userSingOut } = useAuth();
   const handleSignOut = () => {
     userSingOut()
-    .then(result=> {
-      console.log(result);
-    })
-    .catch(error=> {
-      console.log(error.message);
-    })
-  }
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const links = (
     <>
       <li>
@@ -132,18 +132,33 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-      <div className="mr-5">
-        {user ? <img className="w-16 h-16 rounded-full object-fill" src={user?.photoURL} alt="" /> : <CgProfile size={50} />}
-      </div>
-      
-        {user && <motion.button 
-        whileHover={{scale: 1.1}}
-        whileTap={{scale: 0.90}}
-          onClick={handleSignOut}
+        <div className="mr-5 flex items-center gap-4">
+          <input
+            type="checkbox"
+            value="abyss"
+            className="toggle theme-controller"
+          />
+          {user ? (
+            <img
+              className="w-16 h-16 rounded-full object-fill"
+              src={user?.photoURL}
+              alt=""
+            />
+          ) : (
+            <CgProfile size={50} />
+          )}
+        </div>
 
-           className="btn hover:btn-primary">
-            Sign Out 
-           </motion.button>}
+        {user && (
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleSignOut}
+            className="btn hover:btn-primary"
+          >
+            Sign Out
+          </motion.button>
+        )}
       </div>
     </div>
   );

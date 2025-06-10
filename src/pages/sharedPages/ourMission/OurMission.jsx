@@ -5,7 +5,7 @@ const OurMission = () => {
   return (
     <div className="">
       <h1 className="text-center font-semibold text-3xl py-2">Our Mission</h1>
-      <div className="py-6 max-w-11/12 mx-auto my-6 bg-amber-300 p-5 rounded-2xl">
+      <div className="py-6 max-w-11/12 mx-auto my-6 bg-accent p-5 rounded-2xl">
         <h1 className="text-center font-semibold text-xl py-4">
           “To rescue surplus food from going to waste and deliver it to those in
           need.”

@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 import { Link} from "react-router";
+import { toast } from "react-toastify";
 
 const AvailableFoods = () => {
   const [search,setSearch] = useState("");
   const [foods,setFoods] = useState([])
+  const [loading,setLoading] = useState(true)
 
   useEffect(()=> {
+    setLoading(true)
     fetch(`${import.meta.env.VITE_URL}getFoodStatus?search=${search}`)
     .then(res=>res.json())
     .then(data => {
       setFoods(data)
+      setLoading(false)
     })
+    .catch(error=>{
+    toast.error(error.message)
+  })
   }, [search])
+  
+  if(loading){
+    return <p>Loading....</p>
+  }
 
   return (
    <div>

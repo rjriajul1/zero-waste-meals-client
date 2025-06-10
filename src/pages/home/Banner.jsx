@@ -4,7 +4,7 @@ import img2 from "../../assets/donate_2.jpg";
 import { motion } from "motion/react";
 const Banner = () => {
   return (
-    <div className="hero relative min-h-[500px] bg-amber-300 ">
+    <div className="hero relative min-h-[500px] bg-accent ">
       <div className="hero-content gap-10 flex-col lg:flex-row-reverse">
         <div className="flex-1">
           <motion.img

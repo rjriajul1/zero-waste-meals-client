@@ -79,7 +79,7 @@ const AddFood = () => {
           {/* additional  notes */}
           <label>Additional Notes</label>
           <textarea name="command" className="textarea resize-none md:w-4/6 lg:w-1/2" placeholder="Additional Notes"></textarea>
-          <motion.input whileHover={{scale:1.1}} whileTap={{scale: 0.95}} className="btn mx-auto hover:btn-primary w-11/12 my-6" type="submit" value="Add Food" />
+          <motion.input whileHover={{scale:1.1}} whileTap={{scale: 0.95}} className="btn mx-auto hover:btn-primary w-11/12 my-6 border-accent" type="submit" value="Add Food" />
         </form>
       </div>
     </div>
