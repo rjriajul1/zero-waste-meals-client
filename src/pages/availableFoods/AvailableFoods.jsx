@@ -7,12 +7,18 @@ const AvailableFoods = () => {
   const [search,setSearch] = useState("");
   const [foods,setFoods] = useState([])
   const [loading,setLoading] = useState(true)
+  console.log(search);
 
   useEffect(()=> {
     setLoading(true)
+    //console.log("search triggered:", search); 
     fetch(`${import.meta.env.VITE_URL}getFoodStatus?search=${search}`)
-    .then(res=>res.json())
+    .then(res=>{
+    //console.log("res status", res.status); 
+     return res.json()
+    })
     .then(data => {
+      //console.log("Fetched data:", data); 
       setFoods(data)
       setLoading(false)
     })
@@ -20,7 +26,7 @@ const AvailableFoods = () => {
     toast.error(error.message)
   })
   }, [search])
-  
+
   if(loading){
     return <p>Loading....</p>
   }
@@ -28,7 +34,7 @@ const AvailableFoods = () => {
   return (
    <div>
    <div className="flex justify-center p-6">
-     <input onChange={(e)=>setSearch(e.target.value)} className="border p-2 rounded-2xl w-4/6" type="text" placeholder="search" />
+     <input value={search} onChange={(e)=>setSearch(e.target.value)} className="border p-2 rounded-2xl w-4/6" type="text" placeholder="search" />
    </div>
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-11/12 mx-auto my-10">
       <title>Available Food</title>

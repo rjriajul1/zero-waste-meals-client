@@ -132,7 +132,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <div className="mr-5 flex items-center gap-4">
+        <div className="mr-5 flex items-center gap-2 md:gap-4">
           <input
             type="checkbox"
             value="abyss"
@@ -140,7 +140,7 @@ const Navbar = () => {
           />
           {user ? (
             <img
-              className="w-16 h-16 rounded-full object-fill"
+              className="md:w-16 w-10 h-10 md:h-16 -mr-4 md:-mr-0 rounded-full object-fill"
               src={user?.photoURL}
               alt=""
             />
@@ -154,7 +154,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={handleSignOut}
-            className="btn hover:btn-primary"
+            className="btn btn-xs md:btn-xl hover:btn-primary"
           >
             Sign Out
           </motion.button>
