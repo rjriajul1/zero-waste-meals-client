@@ -154,7 +154,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={handleSignOut}
-            className="btn btn-xs md:btn-xl hover:btn-primary"
+            className="btn btn-xs md:btn-md hover:btn-primary"
           >
             Sign Out
           </motion.button>

@@ -15,6 +15,7 @@ const AddFood = () => {
         newFood.donorName = user?.displayName;
         newFood.donorEmail = user?.email;
         newFood.status = 'available';
+        console.log(newFood);
         
         // insert data data base 
         axios.post(`${import.meta.env.VITE_URL}foods`, newFood)

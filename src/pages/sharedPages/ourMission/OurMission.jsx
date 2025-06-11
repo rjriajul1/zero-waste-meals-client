@@ -10,7 +10,7 @@ const OurMission = () => {
           “To rescue surplus food from going to waste and deliver it to those in
           need.”
         </h1>
-        <p className="text-gray-500">
+        <p className="text-primary">
           Every day, a large amount of food goes unused at restaurants, homes,
           and events. Much of it ends up being thrown away. At the same time,
           many people struggle to find their next meal.

@@ -57,6 +57,7 @@ const FoodDetails = () => {
     newRequest.foodId = _id;
     newRequest.status = "requested";
     newRequest.reqEmail = user?.email;
+    newRequest.photo = photo
     if (donorEmail === user?.email) {
       return alert("this food your post do not request ");
     }
