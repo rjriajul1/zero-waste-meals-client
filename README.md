@@ -32,7 +32,7 @@ A web-based food donation platform where users can donate extra food, request fo
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Tailwind CSS, DaisyUI, React Router, React Icons, React Modal, React Toastify, SweetAlert2, Lottie
+- **Frontend**: React, Tailwind CSS, DaisyUI, React Router, React Icons, React Modal, React Toastify, SweetAlert2, Lottie,@tanstack/react-query
 - **Authentication**: Firebase Auth
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
@@ -47,6 +47,7 @@ A web-based food donation platform where users can donate extra food, request fo
 ```json
 "dependencies": {
   "@tailwindcss/vite": "^4.1.8",
+  "@tanstack/react-query": "^5.80.7",
   "axios": "^1.9.0",
   "daisyui": "^5.0.43",
   "firebase": "^11.8.1",

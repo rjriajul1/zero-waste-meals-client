@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FoodReqTable from "./FoodReqTable";
-
+import { useQuery } from '@tanstack/react-query';
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const MyFoodRequest = () => {
+  
   const { user } = useAuth();
-  const [reqFoods, setReqFoods] = useState([]);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_URL}requests?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setReqFoods(data));
-  }, [user]);
+  const {data: foodReqData, isLoading, error} = useQuery({
+    queryKey: ['foodReqData'],
+    queryFn: ()=>fetch(`${import.meta.env.VITE_URL}requests?email=${user?.email}`)
+    .then(res=>res.json())
+  })
+  if(isLoading){
+    return <p>loading.....</p> 
+  }
+  toast.error(error)
+  
   return (
     <div>
       <title>Request My Food </title>
@@ -32,7 +37,7 @@ const MyFoodRequest = () => {
               </tr>
             </thead>
             <tbody>
-              {reqFoods.map((req,index) => (
+              {foodReqData.map((req,index) => (
                 <FoodReqTable index={index} key={req._id} req={req}></FoodReqTable>
               ))}
             </tbody>
