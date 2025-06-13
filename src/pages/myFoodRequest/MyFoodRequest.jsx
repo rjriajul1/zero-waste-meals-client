@@ -7,9 +7,14 @@ import { toast } from "react-toastify";
 const MyFoodRequest = () => {
   
   const { user } = useAuth();
+  console.log(user?.accessToken);
   const {data: foodReqData, isLoading, error} = useQuery({
     queryKey: ['foodReqData'],
-    queryFn: ()=>fetch(`${import.meta.env.VITE_URL}requests?email=${user?.email}`)
+    queryFn: ()=>fetch(`${import.meta.env.VITE_URL}requests?email=${user?.email}`,{
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`
+      }
+    })
     .then(res=>res.json())
   })
   if(isLoading){

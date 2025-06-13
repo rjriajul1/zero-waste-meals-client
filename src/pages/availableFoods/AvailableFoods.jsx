@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
@@ -13,6 +13,7 @@ const AvailableFoods = () => {
   useEffect(() => {
     setLoading(true);
     //console.log("search triggered:", search);
+   
     fetch(`${import.meta.env.VITE_URL}getFoodStatus?search=${search}`)
       .then((res) => {
         //console.log("res status", res.status);
@@ -28,9 +29,7 @@ const AvailableFoods = () => {
       });
   }, [search]);
 
-  if (loading) {
-    return <p>Loading....</p>;
-  }
+
 
   return (
     <div>
@@ -43,7 +42,7 @@ const AvailableFoods = () => {
           placeholder="search"
         />
       </div>
-      <div className={`grid grid-cols-1 md:grid-cols-2 ${layout ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}  gap-6 max-w-7xl mx-auto my-10`}>
+      {loading ? <p>loading...</p> : (<div className={`grid grid-cols-1 md:grid-cols-2 ${layout ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}  gap-6 max-w-7xl mx-auto my-10`}>
         <title>Available Food</title>
         {foods?.map((food) => (
           <div className="" key={food._id}>
@@ -79,11 +78,11 @@ const AvailableFoods = () => {
                     View Details
                   </button>
                 </Link>
-              </div>
+              </div>k
             </div>
           </div>
         ))}
-      </div>
+      </div>)}
       <div className="flex justify-center">
         <button onClick={()=>setLayout(!layout)} className="btn btn-xl hover:btn-primary">Layout change</button>
       </div>

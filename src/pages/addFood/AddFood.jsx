@@ -1,40 +1,50 @@
 import React from "react";
 import { motion } from "motion/react";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
+// import axios from "axios";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 const AddFood = () => {
-   const {user} = useAuth();
-    const handleAddFoodFrom = e => {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const newFood = Object.fromEntries(formData.entries());
-        newFood.donorImage = user?.photoURL;
-        newFood.donorName = user?.displayName;
-        newFood.donorEmail = user?.email;
-        newFood.status = 'available';
-        console.log(newFood);
-        
-        // insert data data base 
-        axios.post(`${import.meta.env.VITE_URL}foods`, newFood)
-        .then(result => {
-          if(result?.data?.data?.insertedId){
-            Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your food has been added successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          form.reset()
-          }
-        })
-        .catch(error=> {
-          toast.error(error.message);
-        })
-    }
+  const { user } = useAuth();
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (newFood) =>
+      fetch(`${import.meta.env.VITE_URL}foods`, {
+        method: "POST",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(newFood),
+      }).then((res) => {
+        if (!res.ok) throw new Error("failed to add food");
+        return res.json();
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["foods"]);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your food has been added successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    },
+  });
+
+  const handleAddFoodFrom = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const newFood = Object.fromEntries(formData.entries());
+    newFood.donorImage = user?.photoURL;
+    newFood.donorName = user?.displayName;
+    newFood.donorEmail = user?.email;
+    newFood.status = "available";
+    console.log(newFood);
+    mutation.mutate(newFood);
+    form.reset();
+  };
   return (
     <div>
       <title>Add Food</title>
@@ -51,7 +61,10 @@ const AddFood = () => {
         </p>
       </div>
       <div className="w-5/6 mx-auto">
-        <form onSubmit={handleAddFoodFrom} className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+        <form
+          onSubmit={handleAddFoodFrom}
+          className="fieldset bg-base-200 border-base-300 rounded-box border p-4"
+        >
           {/* food name */}
           <label className="label">Food Name</label>
           <input
@@ -68,19 +81,44 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Image"
           />
-           {/* food quantity */}
+          {/* food quantity */}
           <label className="label">Food Quantity</label>
-          <input type="number" name="quantity" className="input w-full" placeholder="Food Quantity" />
-           {/* Pickup Location */}
+          <input
+            type="number"
+            name="quantity"
+            className="input w-full"
+            placeholder="Food Quantity"
+          />
+          {/* Pickup Location */}
           <label className="label">PickuP Location</label>
-          <input type="text" name="location" className="input w-full" placeholder="PicKup Location" />
-           {/* Expired Date*/}
+          <input
+            type="text"
+            name="location"
+            className="input w-full"
+            placeholder="PicKup Location"
+          />
+          {/* Expired Date*/}
           <label className="label">Expired Date</label>
-          <input type="date" name="date" className="input w-full" placeholder="Expired Date" />
+          <input
+            type="date"
+            name="date"
+            className="input w-full"
+            placeholder="Expired Date"
+          />
           {/* additional  notes */}
           <label>Additional Notes</label>
-          <textarea name="command" className="textarea resize-none md:w-4/6 lg:w-1/2" placeholder="Additional Notes"></textarea>
-          <motion.input whileHover={{scale:1.1}} whileTap={{scale: 0.95}} className="btn mx-auto hover:btn-primary w-11/12 my-6 border-accent" type="submit" value="Add Food" />
+          <textarea
+            name="command"
+            className="textarea resize-none md:w-4/6 lg:w-1/2"
+            placeholder="Additional Notes"
+          ></textarea>
+          <motion.input
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn mx-auto hover:btn-primary w-11/12 my-6 border-accent"
+            type="submit"
+            value="Add Food"
+          />
         </form>
       </div>
     </div>

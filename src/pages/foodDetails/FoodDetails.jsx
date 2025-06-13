@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 import Modal from "react-modal";
 import useAuth from "../../hooks/useAuth";
 import { currentDate } from "../../utilies/date";
@@ -10,7 +10,19 @@ import { toast } from "react-toastify";
 
 const FoodDetails = () => {
   const { user } = useAuth();
-  const food = useLoaderData();
+  const {id} = useParams()
+  console.log(id);
+  const [food,setFood] = useState({})
+  useEffect(()=>{
+    fetch(`${import.meta.env.VITE_URL}food/${id}`,{
+      headers: {
+         Authorization: `Bearer ${user.accessToken}`,
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>setFood(data))
+  },[id,user]);
+
   const navigate = useNavigate();
   const {
     name,

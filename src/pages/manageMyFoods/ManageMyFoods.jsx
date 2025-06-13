@@ -10,7 +10,7 @@ const ManageMyFoods = () => {
       <title>Manage My Food</title>
       <Suspense fallback={<p>Loading....</p>}>
         <Table
-          promiseFoodUserEmailBase={promiseFoodUserEmailBase(user?.email)}
+          promiseFoodUserEmailBase={promiseFoodUserEmailBase(user?.email,user?.accessToken)}
         ></Table>
       </Suspense>
     </div>
