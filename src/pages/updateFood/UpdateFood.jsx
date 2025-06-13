@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { useLoaderData, useNavigate } from "react-router";
+import {  useNavigate, useParams } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
+
 const UpdateFood = () => {
-  const data = useLoaderData();
   const navigate = useNavigate()
+  const { user } = useAuth();
+  const {id} = useParams()
+  const [food,setFood] = useState({})
+  useEffect(()=>{
+    fetch(`${import.meta.env.VITE_URL}food/${id}`,{
+      headers: {
+         Authorization: `Bearer ${user?.accessToken}`,
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>setFood(data))
+  },[id,user]);
+ 
 
   const handleUpdateFoodFrom = (e) => {
     e.preventDefault();
@@ -14,7 +28,7 @@ const UpdateFood = () => {
     const formData = new FormData(form);
     const newFood = Object.fromEntries(formData.entries());
     axios
-      .put(`${import.meta.env.VITE_URL}foodUpdate/${data._id}`, newFood)
+      .put(`${import.meta.env.VITE_URL}foodUpdate/${food._id}`, newFood)
       .then((result) => {
         console.log(result.data);
         if (result.data.modifiedCount) {
@@ -45,7 +59,7 @@ const UpdateFood = () => {
           <input
             type="text"
             name="name"
-            defaultValue={data?.name}
+            defaultValue={food?.name}
             className="input w-full"
             placeholder="Food Name"
           />
@@ -54,7 +68,7 @@ const UpdateFood = () => {
           <input
             type="url"
             name="photo"
-            defaultValue={data?.photo}
+            defaultValue={food?.photo}
             className="input w-full"
             placeholder="Food Image"
           />
@@ -63,7 +77,7 @@ const UpdateFood = () => {
           <input
             type="number"
             name="quantity"
-            defaultValue={data?.quantity}
+            defaultValue={food?.quantity}
             className="input w-full"
             placeholder="Food Quantity"
           />
@@ -72,7 +86,7 @@ const UpdateFood = () => {
           <input
             type="text"
             name="location"
-            defaultValue={data?.location}
+            defaultValue={food?.location}
             className="input w-full"
             placeholder="PicKup Location"
           />
@@ -81,14 +95,14 @@ const UpdateFood = () => {
           <input
             type="date"
             name="date"
-            defaultValue={data?.date}
+            defaultValue={food?.date}
             className="input w-full"
             placeholder="Expired Date"
           />
           {/* additional  notes */}
           <label>Additional Notes</label>
           <textarea
-            defaultValue={data?.command}
+            defaultValue={food?.command}
             name="command"
             className="textarea resize-none md:w-4/6 lg:w-1/2"
             placeholder="Additional Notes"

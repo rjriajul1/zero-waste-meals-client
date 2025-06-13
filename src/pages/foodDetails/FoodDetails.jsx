@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 
 const FoodDetails = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const {id} = useParams()
-  console.log(id);
   const [food,setFood] = useState({})
   useEffect(()=>{
     fetch(`${import.meta.env.VITE_URL}food/${id}`,{
@@ -23,7 +23,7 @@ const FoodDetails = () => {
     .then(data=>setFood(data))
   },[id,user]);
 
-  const navigate = useNavigate();
+
   const {
     name,
     photo,

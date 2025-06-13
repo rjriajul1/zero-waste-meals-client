@@ -54,8 +54,6 @@ const router = createBrowserRouter([
       {
         path: "updateFood/:id",
         hydrateFallbackElement: <p>Loading.....</p>,
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_URL}food/${params.id}`),
         Component: UpdateFood,
       },
       {
