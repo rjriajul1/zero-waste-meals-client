@@ -18,6 +18,7 @@ const Food = ({ food }) => {
                 <p>quantity: {quantity}</p>
                 <p>EXDate: {date}</p>
             </div>
+            <p>{food.status}</p>
         </div>
     </div>
   )

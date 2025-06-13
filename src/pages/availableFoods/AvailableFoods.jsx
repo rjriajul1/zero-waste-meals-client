@@ -78,7 +78,7 @@ const AvailableFoods = () => {
                     View Details
                   </button>
                 </Link>
-              </div>k
+              </div>
             </div>
           </div>
         ))}
