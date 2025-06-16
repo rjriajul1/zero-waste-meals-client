@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
-import { useLoaderData, useNavigate, useParams } from "react-router";
+import {  useNavigate, useParams } from "react-router";
 import Modal from "react-modal";
 import useAuth from "../../hooks/useAuth";
 import { currentDate } from "../../utilies/date";
@@ -150,7 +150,7 @@ const FoodDetails = () => {
                       <h2 className="dark:text-black">{name}</h2>
                       <p className="text-xs dark:text-black">{_id}</p>
                     </div>
-                    <div className="badge text-gray-500">
+                    <div className="badge text-secondary">
                       <MdLocationOn className="mt-1" size={18} />
                       {location}
                     </div>
