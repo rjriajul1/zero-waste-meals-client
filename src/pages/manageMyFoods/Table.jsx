@@ -42,10 +42,10 @@ const Table = ({ promiseFoodUserEmailBase }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table inline-block  ">
         {/* head */}
         <thead>
-          <tr className="flex justify-around flex-wrap">
+          <tr className="">
             <th>No</th>
             <th>Name</th>
             <th>Date&Quantity</th>

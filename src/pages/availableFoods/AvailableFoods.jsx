@@ -49,7 +49,7 @@ const AvailableFoods = () => {
             <div className="card bg-base-100 h-96 shadow-sm">
               <figure>
                 <img
-                  className=" h-72 object-cover w-full"
+                  className=" h-72 object-cover hover:scale-110 transition w-full"
                   src={food?.photo}
                   alt="food"
                 />

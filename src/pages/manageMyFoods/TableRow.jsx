@@ -6,7 +6,7 @@ const TableRow = ({ food, index, handleDeleteBtn }) => {
   const { name, photo, quantity, location, date, status,_id } = food || {};
  
   return (
-    <tr className="flex flex-wrap justify-around">
+    <tr className="">
       <th>
         <label>{index + 1}</label>
       </th>
