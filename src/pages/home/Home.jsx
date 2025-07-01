@@ -4,6 +4,8 @@ import FeaturedFood from './FeaturedFood';
 import { useLoaderData } from 'react-router';
 import OurMission from '../sharedPages/ourMission/OurMission';
 import Volunteer from './volunteer/Volunteer';
+import BlogSection from './blogSection/BlogSection';
+import OfferSection from './offerSection/OfferSection';
 
 
 const Home = () => {
@@ -16,6 +18,9 @@ const Home = () => {
             <FeaturedFood foods={foods}></FeaturedFood>
             <OurMission></OurMission>
             <Volunteer></Volunteer>
+            <BlogSection></BlogSection>
+            <OfferSection></OfferSection>
+
         </div>
     );
 };

@@ -1,25 +1,29 @@
 import React from "react";
-import { MdLocationOn } from "react-icons/md";
 
 const Food = ({ food }) => {
-  const { name, photo, quantity,location, command,date } = food || {};
+  const { name, photo, quantity,location,status} = food || {};
   return (
-    <div className="flex gap-4 p-4 bg-accent rounded-2xl">
-        <div className="">
-            <figure className="">
-                <img className="rounded-2xl w-80 h-auto " src={photo} alt="" />
-            </figure>
+        <div className="card w-full bg-base-100 shadow-xl">
+      <figure>
+        <img src={photo} alt={name} className="h-56 hover:scale-110 transition w-full object-cover" />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title text-xl font-bold">{name}</h2>
+        
+        <p className="text-sm ">
+          <span className="font-semibold">Location:</span> {location}
+        </p>
+
+        <p className="text-sm ">
+          <span className="font-semibold">Quantity:</span> {quantity}
+        </p>
+
+        <div className="card-actions justify-end">
+          <span className="badge badge-outline px-4 py-1 text-sm capitalize">
+            Status: {status}
+          </span>
         </div>
-        <div className="">
-            <h1 className="text-xl font-bold">{name}</h1>
-            <p className="flex lg:items-center text-primary"><MdLocationOn className="mt-1" size={18} />{location}</p>
-            <p className="py-2">{command}</p>
-            <div className="flex gap-8 ">
-                <p>quantity: {quantity}</p>
-                <p>EXDate: {date}</p>
-            </div>
-            <p>{food.status}</p>
-        </div>
+      </div>
     </div>
   )
 };

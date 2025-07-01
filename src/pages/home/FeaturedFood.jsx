@@ -5,11 +5,11 @@ import { Link } from "react-router";
 const FeaturedFood = ({foods}) => {
  
   return (
-    <div className="max-w-11/12 mx-auto">
-      <h1 className="text-3xl font-semibold my-6 text-center">
+    <div className="max-w-[1600px] mx-auto mt-30">
+      <h1 className="text-3xl text-primary font-bold mb-10 text-center">
         Featured Food
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {foods?.map(food=><Food key={food._id} food={food}></Food>)}
       </div>
      <div className="py-6 flex justify-center">

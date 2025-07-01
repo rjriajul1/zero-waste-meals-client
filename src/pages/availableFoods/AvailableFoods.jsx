@@ -32,7 +32,7 @@ const AvailableFoods = () => {
 
 
   return (
-    <div>
+    <div className="">
       <div className="flex justify-center p-6">
         <input
           value={search}
@@ -42,14 +42,14 @@ const AvailableFoods = () => {
           placeholder="search"
         />
       </div>
-      {loading ? <p>loading...</p> : (<div className={`grid grid-cols-1 md:grid-cols-2 ${layout ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}  gap-6 max-w-7xl mx-auto my-10`}>
+      {loading ? <p>loading...</p> : (<div className={`grid grid-cols-1 p-2 sm:grid-cols-2 ${layout ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}  gap-6 max-w-[1600px] mx-auto my-10`}>
         <title>Available Food</title>
         {foods?.map((food) => (
           <div className="" key={food._id}>
             <div className="card bg-base-100 h-96 shadow-sm">
               <figure>
                 <img
-                  className=" h-72 object-cover hover:scale-110 transition w-full"
+                  className=" h-64 object-cover hover:scale-110 transition w-full"
                   src={food?.photo}
                   alt="food"
                 />

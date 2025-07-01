@@ -37,7 +37,20 @@ const Navbar = () => {
           Available Foods
         </NavLink>
       </li>
+     
       <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 underline" : ""
+          }
+          to="/ContactUs"
+        >
+          Contact Us
+        </NavLink>
+      </li>
+      {user ? (
+        <>
+         <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-blue-500 underline" : ""
@@ -66,9 +79,7 @@ const Navbar = () => {
         >
           My Food Request
         </NavLink>
-      </li>
-      {user ? (
-        ""
+      </li></>
       ) : (
         <>
           <li>
@@ -96,7 +107,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="bg-accent shadow-xl ">
+      <div className="navbar max-w-[1600px] mx-auto ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -123,7 +135,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <h1 className="text-2xl font-bold text-green-500">
+        <h1 className="text-2xl hidden md:block font-bold ">
           <span className="text-blue-500">Zero</span>
           <span className="text-red-500">Waste</span>Meals
         </h1>
@@ -160,6 +172,7 @@ const Navbar = () => {
           </motion.button>
         )}
       </div>
+    </div>
     </div>
   );
 };

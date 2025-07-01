@@ -10,12 +10,19 @@ import Register from "../pages/register/Register";
 import PrivateRoutes from "../routes/PrivateRoutes";
 import FoodDetails from "../pages/foodDetails/FoodDetails";
 import UpdateFood from "../pages/updateFood/UpdateFood";
+import ContactUs from "../pages/contactUs/ContactUs";
+import ErrorPage from "../utils/ErrorPage";
+import Navbar from "../pages/sharedPages/header/Navbar";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <div>
+      <Navbar></Navbar>
+      <ErrorPage></ErrorPage>
+    </div>,
     children: [
       {
         index: true,
@@ -42,6 +49,10 @@ const router = createBrowserRouter([
             <ManageMyFoods></ManageMyFoods>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "contactUs",
+        Component:ContactUs
       },
       {
         path: "myFoodRequest",

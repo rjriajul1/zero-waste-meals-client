@@ -48,8 +48,8 @@ const AddFood = () => {
   return (
     <div>
       <title>Add Food</title>
-      <div>
-        <h1 className="text-4xl font-semibold my-4 text-center">
+      <div className="mt-30">
+        <h1 className="text-4xl font-bold text-primary my-4 text-center">
           {" "}
           Share a Meal, Spread the Love
         </h1>
@@ -60,7 +60,7 @@ const AddFood = () => {
           difference. Let’s come together to build a community that cares.
         </p>
       </div>
-      <div className="w-5/6 mx-auto">
+      <div className="w-5/6 mx-auto mt-10">
         <form
           onSubmit={handleAddFoodFrom}
           className="fieldset bg-base-200 border-base-300 rounded-box border p-4"

@@ -4,8 +4,8 @@ import { Link } from "react-router";
 
 const Volunteer = () => {
   return (
-    <div>
-        <h1 className="text-center text-3xl font-semibold  py-6">Become Volunteer</h1>
+    <div className="mt-30">
+        <h1 className="text-center text-primary text-3xl font-bold  mb-10">Become Volunteer</h1>
       <section className="bg-gray-100 py-12 px-6 md:px-16">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
@@ -29,8 +29,8 @@ const Volunteer = () => {
               <li>👫 Support at events and drives</li>
             </ul>
 
-            <Link
-              className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl shadow hover:bg-green-700 transition duration-300"
+            <Link to="/contactUs"
+              className="inline-block hover:bg-primary hover:text-white outline-0 text-black px-6 py-3 rounded-xl shadow  transition duration-300"
             >
               Join Now
             </Link>
