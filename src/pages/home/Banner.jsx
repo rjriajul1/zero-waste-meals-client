@@ -6,8 +6,8 @@ import { Link } from "react-router";
 const Banner = () => {
   return (
     <div className="bg-accent">
-      <div className=" max-w-[1600px] mx-auto relative min-h-[500px]  mt-6 ">
-        <div className="flex justify-between items-center gap-20 lg:flex-row-reverse ">
+      <div className=" p-3 max-w-[1600px] mx-auto relative min-h-[500px]  mt-6 ">
+        <div className="md:flex  md:justify-between items-center gap-20 lg:flex-row-reverse ">
           {/* image */}
           <div className="flex-1">
             <motion.img
@@ -25,7 +25,7 @@ const Banner = () => {
           </div>
           {/* content */}
           <div className="flex-1">
-            <h1 className="text-5xl font-bold">
+            <h1 className="lg:text-5xl text-3xl font-bold">
               Don’t Waste Food — Save a Life!
             </h1>
             <p className="py-6">

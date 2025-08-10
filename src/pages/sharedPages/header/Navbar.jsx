@@ -20,7 +20,7 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-blue-500 underline" : ""
+            isActive ? "text-blue-500 underline font-bold" : "font-bold"
           }
           to="/"
         >
@@ -30,7 +30,7 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-blue-500 underline" : ""
+            isActive ? "text-blue-500 underline font-bold" : "font-bold"
           }
           to="/availableFoods"
         >
@@ -41,7 +41,7 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-blue-500 underline" : ""
+            isActive ? "text-blue-500 underline font-bold" : "font-bold"
           }
           to="/ContactUs"
         >
@@ -53,7 +53,7 @@ const Navbar = () => {
          <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-blue-500 underline" : ""
+            isActive ? "text-blue-500 underline font-bold" : "font-bold"
           }
           to="/addFood"
         >
@@ -63,7 +63,7 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-blue-500 underline" : ""
+            isActive ? "text-blue-500 underline font-bold" : "font-bold"
           }
           to="/manageMyFoods"
         >
@@ -73,7 +73,7 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-blue-500 underline" : ""
+            isActive ? "text-blue-500 underline font-bold" : "font-bold"
           }
           to="/myFoodRequest"
         >
@@ -85,7 +85,7 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "text-blue-500 underline" : ""
+                isActive ? "text-blue-500 underline font-bold" : "font-bold"
               }
               to="/login"
             >
@@ -95,7 +95,7 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "text-blue-500 underline" : ""
+                isActive ? "text-blue-500 underline font-bold" : "font-bold"
               }
               to="/register"
             >
@@ -107,7 +107,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-accent shadow-xl ">
+    <div className="bg-accent shadow-xl py-5 ">
       <div className="navbar max-w-[1600px]  mx-auto ">
       <div className="navbar-start">
         <div className="dropdown">

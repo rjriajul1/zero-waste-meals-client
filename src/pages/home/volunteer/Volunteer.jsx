@@ -7,7 +7,7 @@ const Volunteer = () => {
     <div className="mt-30">
         <h1 className="text-center text-primary text-3xl font-bold  mb-10">Become Volunteer</h1>
       <section className="bg-gray-100 py-12 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <img className="rounded-2xl" src={donated} alt="" />
           </div>
